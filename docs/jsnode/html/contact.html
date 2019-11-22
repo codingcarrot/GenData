@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/main.css">
+    <meta charset="utf-8" />
+</head>
+<body>
+
+        <div id="mySidenav" class="sidenav">
+            <div class="links">
+                <a href="index.html"> home</a>
+                <a href="import.html"> import</a>
+                <a href="search.html"> search</a>
+                <a href="contact.html"> contact us</a>
+                <a href="{% url 'login' %}"> logout</a>
+            </div>
+        </div>
+        
+        <div class="content" id="contact">
+            <h1 style="font-size: 100px; margin: 10px 0 0 0; font-weight: lighter;">contact us</h1>
+            <hr>
+            <br>
+            <br>
+            <br>
+            <p>Address: Rm 5008, CYT building, HKUST, Clearwater bay, HK</p>
+            <p>Tel: (+852) 98098718</p>
+            <p>Email: tiffanytze@ust.hk</p>
+        </div>
+
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a>
+
+    
+
+  
+</body>
+</html>
+<script></script>  
