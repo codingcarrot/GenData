@@ -1,0 +1,202 @@
+/*main.css*/
+body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: "Lato", sans-serif;
+}
+h1 {
+  font-size: 3em;
+  margin: 10px 0 0 0;
+  font-weight: lighter;
+}
+h2 {
+  font-size: 1.8em; margin: 10px 0 0 0; font-weight: lighter;
+}
+#sidenav {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    float: left;
+    overflow: auto;
+    z-index: 1;
+    top: 0;
+    left: 0px;
+    background-image: linear-gradient(to bottom right, #aaf0c7, #90d1e8);
+    padding-top: 60px;
+    min-height: 600px;
+    min-width: 245px;
+}
+
+#sidenav h1, a{
+    font-size: 1.7em;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+#sidenav a:hover {
+    color: #e6e6e6;
+}
+
+#menu {
+    text-align: left;
+    margin-left: 40px;
+    float: left;
+    color: #FFF;
+}
+#menu a{
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1.4em;
+    text-transform: lowercase;
+}
+
+#menu a:hover {
+    color: #e6e6e6;
+}
+#menu ul, li{
+    list-style-type: none;
+    text-align: left;
+}
+
+#signature{
+    color: #fff;
+    letter-spacing: 0.11em;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    text-align: right;
+    list-style-type: none;
+    position: absolute;
+    bottom: 23px;
+    right: 35px;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+#content {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    color: #9e9e9e;
+    padding: 10px 0px 0px 70px;
+    display: block;
+    float: right;
+    width: 80%;
+    min-height: 100%;
+    position: relative;
+}
+
+button[type=submit] {
+    
+    color: rgba(0,0,0,0.50);
+    background-color:#f5f5f5;
+    border-color: #d9d9d9;
+    border-radius: 5px;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    height: 32px; 
+}
+input[type=text] {
+    padding: 8px 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #9e9e9e;
+    font-size: 15px;
+}
+input[type=text]:hover {
+    border: 1px solid #5ca9f8;
+}
+input[type=password]:hover {
+    border: 1px solid #5ca9f8;
+}
+button[type=submit]:hover {
+    border: 1px solid #5ca9f8;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #d9d9d9;
+    font-size: 15px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #d9d9d9;
+    font-size: 15px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #d9d9d9;
+  font-size: 15px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #d9d9d9;
+  font-size: 15px;
+}
+
+table {
+    font-family: "Lato", sans-serif;
+    border-collapse: separate;
+    width: 100%;
+    text-align: left;
+    border-radius: : 4px 4px 0 0;
+    border-spacing: 0;
+    font-size: 14px;
+    color: #314659;
+    padding: 21px 10px 50px;
+}
+td, th {
+    border-bottom: 1px solid #ddd;
+    padding:10px;
+    color: rgba(0,0,0,0.65);
+
+}
+td {
+    text-align: center;
+}
+td:hover {
+    background-color: #ebf7ff; 
+    transition: 0.3s;
+
+}
+th {
+    text-align: left;
+    background-color: #FAFAFA;
+    color: rgba(0,0,0,0.85);
+}
+::selection {
+    color: #fff;
+    background: #1890ff;
+}
+table.fixed {table-layout:fixed;}/*Setting the table width is important!*/
+/*table.fixed tr:nth-of-type(9) {overflow-x: scroll;}*//*Hide text outside the cell.*/
+/*table.fixed tr:nth-of-type(9) {width:40px;}*//*Setting the width of column 3.*/
+.selected {
+    background-color: #ebf7ff; 
+    color: rgba(0,0,0,0.65);
+}
+
+select, input {
+    color: #9e9e9e;
+}
+
+@keyframes delay_visibility {
+    from {visibility: hidden;}
+    to {visibility: visible;}
+}
+@keyframes delay_opacity {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.messages {
+    -webkit-animation-name: delay_visibility; /* Safari 4.0 - 8.0 
+    -webkit-animation-duration: 0s; /* Safari 4.0 - 8.0 
+    animation-name: delay_visibility;
+    animation-duration: 0s;
+    -webkit-animation-name: delay_opacity; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.5s; /* Safari 4.0 - 8.0 */
+    animation-name: delay_opacity;
+    animation-duration: 0.5s;
+}

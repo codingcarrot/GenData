@@ -1,0 +1,35 @@
+<!-- login only with admin password generate invitation code --> 
+
+<%- include('../partials/header'); %>
+<!-- header -->
+	<h1 style="font-size: 100px; margin: 10px 0 0 0; font-weight: lighter;">admin</h1>
+	<hr>
+
+    <!-- display only if logged in user is admin -->
+    <% if(rights == 'admin') { %>
+        <!-- display error message if field is not correctly filled in -->
+        <% if(message != '') {%>    
+            <div class="messages alert alert-danger" >
+                <strong> <%=message %> </strong>
+            </div>
+        <% } %>
+    <!-- code generation form -->
+        <form action="http://143.89.24.151:80/admin" method="post">
+            <div><p>Generate and send code:</p>
+            <p><input type="text" id="email" name="email" value="" placeholder="applicant email"></p>
+            </div>
+            <div><button type="submit">submit</div>
+        </form>
+        <br>
+        <% if(success) {%>    
+            <div class="messages alert alert-success" >
+                <strong>Code is sent to <%= email%></strong>
+            </div>
+        <% } %>
+    <% } else { %>
+            <div class="messages alert alert-danger" >
+                <strong> You are not authorised to view this page. </strong>
+            </div>
+    <% } %>
+
+<%- include('../partials/footer'); %>

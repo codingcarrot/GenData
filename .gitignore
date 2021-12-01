@@ -1,0 +1,34 @@
+#.gitignore
+
+# 忽略 secret.yml 檔案
+# secret.yml
+
+# 忽略 config 目錄下的 database.yml 檔案
+# config/database.yml
+
+# 忽略所有 db 目錄下附檔名是 .sqlite3 的檔案
+# /db/*.sqlite3
+
+# 忽略所有附檔名是 .tmp 的檔案
+# *.tmp
+
+# 當然你要忽略自己也可以，只是通常不會這麼做
+# .gitignore
+
+#ignore performance ppt screen cap
+/docs/CPU usage.jpg
+/docs/DBhome.jpg
+/docs/RedcapDemo-dataComparisonModule.jpg
+/docs/RedcapDemo-dataExportModule.jpg
+/docs/RedcapDemo-fileRepoModule.jpg
+/docs/RedcapDemo-project_home.jpg
+/docs/search.jpg
+/docs/searchResult.jpg
+
+#ignore node modules
+/docs/final/node_modules
+
+#ignore error reports
+/docs/final/report.20200312.122831.5696.0.001.json
+/docs/final/report.20210217.115158.8552.0.001.json
+/docs/final/report.20210409.162539.7360.0.001.json

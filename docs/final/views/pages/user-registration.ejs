@@ -1,0 +1,29 @@
+<%- include('../partials/header-login'); %>
+	    <!-- display error message if field is not correctly filled in -->
+        <div class = container>
+            <br>
+            <div class="row justify-content-center">
+            <div class="col-4">
+                
+                <div class="col-4">                    
+                        <form class="login-form" method="post" action="/users/register" style="margin-top: 50%">
+                        <%- include('../partials/messages') %>
+                            <input type="text" name="name" placeholder="name">
+                            <input type="text" name="username" placeholder="username">
+                            <input type="text" name="email" placeholder="email">
+                            <input type="password" name="password" placeholder="password">
+                            <input type="password" name="password2" placeholder="confirm password">
+                            <input type="password" name="invitation" placeholder="invitation code">    
+                            <div class = "row justify-content-center">
+                                <!-- <div class = "col-4"> -->
+                                    <div class="login-btn-div"><button type="submit">register</div>
+                                <!-- </div> -->
+                            </div>            
+                        </form>
+                </div>
+            </div>
+        </div>
+
+	
+
+<%- include('../partials/footer'); %>

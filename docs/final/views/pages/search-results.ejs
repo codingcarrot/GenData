@@ -1,0 +1,52 @@
+<%- include('../partials/header'); %>
+
+            <h1 style="font-size: 100px; margin: 10px 0 0 0; font-weight: lighter;">search results</h1>
+            <hr>
+            <h2><%= query_key %></h2>
+            <% if (results.length > 0) { %>
+            	<p><button id = 'export'>Export</button></p>
+
+		        <table class = 'fixed' style = "width: <%= (results.length)*150+100 %>px;">
+		        	<% keyList.forEach(function(key){ %>
+		        		<tr id = 'varID'>
+		        			<% if(key == 'VAR_ID') {%>
+		        				<th style=" width: 100px;"><input type ='checkbox' id='selectAll' onclick ='selectOrUnselectAll()'>&nbsp&nbsp<%= key %></th>
+			        				<% results.forEach(function(row){ %>
+			        					<td style=" width: 150px;"><input type ='checkbox' name = 'acs' onclick ='checkSelectAll()'>&nbsp&nbsp<%= row[key] %></td>
+			        				<% }); %>
+			        		<% } else if(key == 'INFO') {%>
+			        			<th style=" width: 100px;"><%= key %></th>
+		        					<% results.forEach(function(row){ %>
+		        						<td style=" width: 150px; overflow-x: scroll;"><%= row[key] %></td>
+		        					<% }); %>
+			        		
+		        			<% } else {%>
+		        				<th style=" width: 100px;"><%= key %></th>
+		        					<% results.forEach(function(row){ %>
+		        						<td style=" width: 150px;"><%= row[key] %></td>
+		        					<% }); %>
+		        			<%  }  %>
+		        		</tr>	
+		        	<% }); %>
+		        	
+		        <!-- 	<tr>
+		        		<% results.forEach(function(row){ %>
+		        		<tr name = 'row'>
+		        			<% keyList.forEach(function(key){ %>
+		        				<%if(key == 'VAR_ID') {%>
+		        					<td><input type ='checkbox' name = 'acs' onclick ='checkSelectAll()'><%= row[key] %></td>
+		        				<% } else { %>
+			        				<td><%= row[key] %></td>
+		        				<%  }  %>
+		        			<% }); %>
+		        		</tr>
+		        		<% }); %>
+		        	</tr> -->	
+		        </table>
+            <% }else{ %> 
+            	<p>No results available.</p>
+            <% } %>
+
+	<script type="text/javascript" src="/js/downloadSelectedRows.js"></script>
+	<script type="text/javascript" src="/js/checkbox.js"></script>
+<%- include('../partials/footer'); %>

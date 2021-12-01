@@ -1,0 +1,32 @@
+
+	<nav id="sidenav">
+		<h1><a href="/" style="color:#FFF; text-decoration: none;">Cell Lines</a></h1>
+		<br><br>
+	    <ul id="menu">
+	    	<li>
+	    		<a href="/">&#5171; home</a>
+	    	</li>
+	        <li>
+	        	<a href="/search">&#5171; search</a>
+	        </li>
+	        <li>
+		        <a href="/contact">&#5171; contact</a>
+	        </li>
+	        <!-- <li>
+	        	<a href="">&#5171; setting</a>
+	        </li> -->
+	        <% if (rights == "admin") { %>
+		        <li>
+		        	<a href="/admin">&#5171; admin</a>
+		        </li>
+	        <% } %>
+	        <li>
+	        	<a href="/users/logout">&#5171; logout</a>
+	        </li>
+       </ul>
+       <ul id="signature">
+       		<li>Developed by:</li>
+       		<li>Tiffany</li>
+       </ul>
+	</nav>
+

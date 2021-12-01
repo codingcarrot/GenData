@@ -1,0 +1,53 @@
+<%- include('../partials/header'); %>
+
+<!-- header -->
+    <h1 style="font-size: 100px; margin: 10px 0 0 0; font-weight: lighter;">search</h1>
+    <hr>
+
+<!-- display error message if field is not correctly filled in -->
+    <% if(message != '') {%>    
+        <div class="messages alert alert-danger" >
+            <strong> <%=message %> </strong>
+        </div>
+    <% } %>
+
+<!-- Search form  -->
+    <form action="http://143.89.24.151:80/search/results" method="post">
+        <div>
+            <!-- Specify cell line -->
+                <p>cell type*:
+                <select name="cellline"> 
+                    <% if (celllines.length > 0) { %>
+                        <% celllines.forEach(function(item){ %>
+                            <option value="<%= item.Name %>"><%= item.Name %></option>
+                        <%  }); %>
+                    <% } %>
+                </select></p>
+            <!-- Search by ID -->
+                <p>Search by rsID: (for multi rsID search, please put a comma in between rsIDs.)</p>
+                <div>
+                    <p>rsID: <input type="text" id="field2id" name="id" placeholder = "(eg.rs7412)" value=""> (v151)</p>
+                </div>
+
+            <!-- Search by position -->
+                <p>Or, search by position:</p>
+                <div>
+                    <p>chromosomes*:
+                    <select name="chromosomes">
+                            <option value=""></option> 
+                        <% for(var i = 1; i<23 ;i++) { %>
+                            <option value="<%= i %>"><%= i %></option>
+                        <% } %>
+                        <option value="x">x</option>
+                        <option value="y">y</option>
+                    </select></p>
+                    <p>position range: 
+                        <input type="text" id="lower" name="downstream" value=""> - <input type="text" id="upper" name="upstream" value="">
+                    </p>
+                </div>
+        </div>
+        
+        <div><button type="submit">submit</div>
+    </form>
+
+<%- include('../partials/footer'); %>
