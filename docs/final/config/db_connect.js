@@ -18,7 +18,7 @@ module.exports = {
 			host: db.host,
 			user: db.user,
 			password: db.password,
-			database: "gen_user" 
+			database: "gen_user"
 	},
 
 	// SNP database
@@ -26,9 +26,9 @@ module.exports = {
 			host: db.host,
 			user: db.user,
 			password: db.password,
-			database: "Genome"
+			database: "Genome_backup"
 	},
- 	
+
  	//handle disconnect
  	con: (config) => {
  		var connection = mysql.createConnection(config);
@@ -52,5 +52,3 @@ module.exports = {
 		return connection;
  	},
 };
-
-

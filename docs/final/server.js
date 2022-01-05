@@ -16,7 +16,7 @@
 	const session = require('express-session');
 	const config = require("./config/database");
 	const mongoose = require('mongoose');
-	
+
 //Passport config
 require('./config/passport')(passport);
 
@@ -98,10 +98,12 @@ const adminRouter = require("./routes/admin");
 const searchRouter = require("./routes/search");
 const usersRouter = require("./routes/users");
 // const registerRouter = require("./routes/register");
+// const authRouter = require("./routes/auth");
+
 
 /****
 	*
-	*	All page renderings 
+	*	All page renderings
 	*
 ****/
 app.use('/', publicRouter);
@@ -109,10 +111,14 @@ app.use('/admin', adminRouter);
 app.use('/search', searchRouter);
 // app.use('/register', registerRouter);
 app.use('/users', usersRouter);
-
+// app.use('/auth', authRouter);
 // app.use('/login', loginRouter);
 
 
+//Auth file upload
+// app.get("/.well-known/pki-validation/61FFAA81038A95A2E65A8310D10276E5.txt",async function(req,res){
+//     res.sendFile('./61FFAA81038A95A2E65A8310D10276E5.txt',{root: __dirname})
+// })
 /****
 	*
 	*	Connect to the server
@@ -121,3 +127,18 @@ app.use('/users', usersRouter);
 var server = app.listen(80, function(){
 	console.log("Server started on 80....");
 });
+//
+// var https = require('https');
+// var fs = require('fs');
+// var https_options = {
+// key: fs.readFileSync("./143_89_25_28.key"),
+// cert: fs.readFileSync("./certificate.crt"),
+// ca: [
+// // fs.readFileSync('path/to/CA_root.crt'),
+// fs.readFileSync('./ca_bundle.crt')
+// ]
+// };
+// https.createServer(options, function (req, res) {
+// res.writeHead(200);
+// res.end("Welcome to Node.js HTTPS Servern");
+// }).listen(8443)

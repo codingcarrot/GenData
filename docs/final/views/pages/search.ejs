@@ -5,18 +5,18 @@
     <hr>
 
 <!-- display error message if field is not correctly filled in -->
-    <% if(message != '') {%>    
+    <% if(message != '') {%>
         <div class="messages alert alert-danger" >
             <strong> <%=message %> </strong>
         </div>
     <% } %>
 
 <!-- Search form  -->
-    <form action="http://143.89.24.151:80/search/results" method="post">
+    <form action="http://143.89.25.28:80/search/results" method="post">
         <div>
             <!-- Specify cell line -->
                 <p>cell type*:
-                <select name="cellline"> 
+                <select name="cellline">
                     <% if (celllines.length > 0) { %>
                         <% celllines.forEach(function(item){ %>
                             <option value="<%= item.Name %>"><%= item.Name %></option>
@@ -34,19 +34,19 @@
                 <div>
                     <p>chromosomes*:
                     <select name="chromosomes">
-                            <option value=""></option> 
+                            <option value=""></option>
                         <% for(var i = 1; i<23 ;i++) { %>
                             <option value="<%= i %>"><%= i %></option>
                         <% } %>
                         <option value="x">x</option>
                         <option value="y">y</option>
                     </select></p>
-                    <p>position range: 
+                    <p>position range:
                         <input type="text" id="lower" name="downstream" value=""> - <input type="text" id="upper" name="upstream" value="">
                     </p>
                 </div>
         </div>
-        
+
         <div><button type="submit">submit</div>
     </form>
 
