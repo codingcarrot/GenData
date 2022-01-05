@@ -16,19 +16,17 @@
 # .gitignore
 
 #ignore performance ppt screen cap
-/docs/CPU usage.jpg
-/docs/DBhome.jpg
-/docs/RedcapDemo-dataComparisonModule.jpg
-/docs/RedcapDemo-dataExportModule.jpg
-/docs/RedcapDemo-fileRepoModule.jpg
-/docs/RedcapDemo-project_home.jpg
-/docs/search.jpg
-/docs/searchResult.jpg
 
 #ignore node modules
-/docs/final/node_modules
+/node_modules
 
 #ignore error reports
-/docs/final/report.20200312.122831.5696.0.001.json
-/docs/final/report.20210217.115158.8552.0.001.json
-/docs/final/report.20210409.162539.7360.0.001.json
+
+#ignore keys
+/certificate.crt
+/ca_bundle.crt
+/143_89_25_28.key
+/143_89_25_28.csr
+/61FFAA81038A95A2E65A8310D10276E5.txt
+# mailing list
+/mailingList.txt
