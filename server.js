@@ -13,7 +13,8 @@
 	const bcrypt = require('bcryptjs');
 	const validator = require('validator');
 	const flash = require('connect-flash');
-	const session = require('express-session');
+	// const session = require('express-session');
+	const session = require('cookie-session');
 	const config = require("./config/database");
 	const mongoose = require('mongoose');
 
