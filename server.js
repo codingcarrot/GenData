@@ -125,9 +125,16 @@ app.use('/users', usersRouter);
 	*	Connect to the server
 	*
 ****/
-var server = app.listen(80, function(){
-	console.log("Server started on 80....");
+
+const PORT = process.env.PORT || 80;
+var server = app.listen(PORT, err => {
+    if(err) throw err;
+		console.log("Server started on 80....");
+    console.log("%c Server running", "color: green");
 });
+// var server = app.listen(80, function(){
+// 	console.log("Server started on 80....");
+// });
 //
 // var https = require('https');
 // var fs = require('fs');
