@@ -16,7 +16,7 @@ const dbPassword = 'mongodb+srv://twtmak:il0DgA3V7H5qIJOC@test-rgrzt.mongodb.net
 
 module.exports = {
 	host: "localhost",
-	// host: "143.89.24.151",
+	// host: "143.89.25.28:3306",
 	user: "root",
 	password: "password1234",
 	mongoURI: dbPassword

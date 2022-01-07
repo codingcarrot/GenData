@@ -10,7 +10,7 @@ const validator = require('validator');
 //User model
 const User = require('../models/User');
 
-//user db connection 
+//user db connection
 const con_user = db_con.con(db_con.User_db);
 
 
@@ -26,7 +26,7 @@ const con_user = db_con.con(db_con.User_db);
 	  })(req, res, next);
 	});
 
-//logout redirect 
+//logout redirect
 	router.get('/logout', (req, res) => {
 		req.logout();
 		req.flash('success_msg', 'You are logged out');
@@ -60,7 +60,7 @@ router.post('/register', (req, res) => {
 		errors.push({msg:"Invalid email."})
 	}
 
-	//if everything checks out 
+	//if everything checks out
 	//Check if invitation code is valid
 	if(errors.length > 0){
 		res.render('pages/user-registration.ejs', settings.register(errors)
@@ -104,12 +104,12 @@ router.post('/register', (req, res) => {
 										name,
 										username,
 										email,
-										password, 
+										password,
 										rights: 'normal'
 									})
 
 									//Hash password
-									bcrypt.genSalt(10, (err, salt) => 
+									bcrypt.genSalt(10, (err, salt) =>
 										bcrypt.hash(newUser.password, salt, (err, hash) => {
 											if(err) throw err;
 											// Set password to hash
@@ -137,6 +137,10 @@ router.post('/register', (req, res) => {
 				// }
 				);
 			}
+			// con_user.release();
+			//Handle error after the release
+			err_handle.err(err);
+			// Don't use the connection here, it has been returned to the pool.
 		})
 	}
 });

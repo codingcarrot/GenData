@@ -15,14 +15,31 @@ module.exports = {
 
 	//User database
 	User_db: {
+			connectionLimit : 100,
 			host: db.host,
 			user: db.user,
 			password: db.password,
 			database: "gen_user"
 	},
+	// var user_pool  = {
+	//   connectionLimit : 10,
+	//   host            : db.host,
+	//   user            : db.user,
+	//   password        : db.password,
+	//   database        : "gen_user"
+	// },
 
 	// SNP database
+	// var snp_pool  = {
+	//   connectionLimit : 10,
+	//   host            : db.host,
+	//   user            : db.user,
+	//   password        : db.password,
+	//   database        : "Genome_backup"
+	// },
+
 	SNP_db: {
+			connectionLimit : 100,
 			host: db.host,
 			user: db.user,
 			password: db.password,
@@ -31,16 +48,16 @@ module.exports = {
 
  	//handle disconnect
  	con: (config) => {
- 		var connection = mysql.createConnection(config);
+ 		var pool = mysql.createPool(config);
 
- 		connection.connect(function(err) {
+ 		pool.getConnection(function(err) {
 			if(err) {
-				console.log('error when connecting to do:', err);
+				console.log('error when connecting to db:', err);
 				setTimeout(handleDisconneect, 2000);
 			}
 		});
 
-		connection.on('error', function(err) {
+		pool.on('error', function(err) {
 			console.log('db error', err);
 			if(err.code === 'PROTOCOL_CONNECTION_LOST') {
 				module.exports.con(config);
@@ -49,6 +66,6 @@ module.exports = {
 			}
 		});
 
-		return connection;
+		return pool;
  	},
 };

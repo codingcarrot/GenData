@@ -20,15 +20,23 @@ const con_user = db_con.con(db_con.User_db);
 const code_log_send = (res, code, timestamp, email, req) => {
 	bcrypt.hash(code, 10, function(err, hash){
 		//Store hash in password DB
-		
-		con_user.query('insert into inv_code values (0, ?, ?, ?);', [hash, timestamp, email], function(err, _results, fields){
-			err_handle.error(err);
-			// send email to applicant
-				let mailContents = mail.content(email, code);
-				mail.sendMail(mailContents);
-				console.log(req.user.rights);
-				res.render('pages/admin.ejs',settings.admin('', true, email, req.user.rights));
+		con_user.getConnection(function(err, connection){
+			if (err) throw err;
+			connection.query('insert into inv_code values (0, ?, ?, ?);', [hash, timestamp, email], function(err, _results, fields){
+				err_handle.error(err); //not connnected
+				// send email to applicant
+					let mailContents = mail.content(email, code);
+					mail.sendMail(mailContents);
+					console.log(req.user.rights);
+					res.render('pages/admin.ejs',settings.admin('', true, email, req.user.rights));
+					connection.release();
+					//Handle error after the release
+					if (err) throw err;
+					// Don't use the connection here, it has been returned to the pool.
+			})
 		})
+
+
 	})
 }
 
@@ -48,7 +56,7 @@ const code_log_send = (res, code, timestamp, email, req) => {
 		// } else {
 		// 	res.redirect('/');
 		// }
-		
+
 	})
 
 	router.post('/', ensureAuthenticated, function(req, res){
@@ -65,24 +73,33 @@ const code_log_send = (res, code, timestamp, email, req) => {
 				//maximum generate 5 invitation codes
 				var yesterday = new Date();
 				var int_yesterday = yesterday.setDate(new Date().getDate()-1);	//int
-				con_user.query('select count(*) as count from inv_code where time_created > ? union select email from inv_code where email = ? and time_created > ?;',[int_yesterday, email, int_yesterday], function(err, results, fields){
-					if(err){
-						throw err;
-						console.log(err);
-					}
-					//results[0].count = number of valid code, results[1].count = email with codes already generated (if matched)
-					if(results[0].count <5 && !results[1]){
-						code_log_send(res, generatePassword(12, false), Date.now(), email, req);
-					}else{
-						if (results[1]){
-							message = "Invitation code is already generated for this email.";
-							res.render('pages/admin.ejs',settings.admin(message, false, '', req.user.rights));
-						} else{
-							message = "More than 5 invitation codes are generated.";
-							res.render('pages/admin.ejs',settings.admin(message, false, '', req.user.rights));
+				con_user.getConnection(function(err, connection){
+					if (err) throw err;
+					connection.query('select count(*) as count from inv_code where time_created > ? union select email from inv_code where email = ? and time_created > ?;',[int_yesterday, email, int_yesterday], function(err, results, fields){
+						if(err){
+							throw err;
+							console.log(err);
 						}
-					}
+						//results[0].count = number of valid code, results[1].count = email with codes already generated (if matched)
+						if(results[0].count <5 && !results[1]){
+							code_log_send(res, generatePassword(12, false), Date.now(), email, req);
+						}else{
+							if (results[1]){
+								message = "Invitation code is already generated for this email.";
+								res.render('pages/admin.ejs',settings.admin(message, false, '', req.user.rights));
+							} else{
+								message = "More than 5 invitation codes are generated.";
+								res.render('pages/admin.ejs',settings.admin(message, false, '', req.user.rights));
+							}
+						}
+						connection.release();
+						//Handle error after the release
+						if (err) throw err;
+						// Don't use the connection here, it has been returned to the pool.
+					})
 				})
+
+
 			}
 
 		// } else {

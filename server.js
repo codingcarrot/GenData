@@ -129,7 +129,7 @@ app.use('/users', usersRouter);
 const PORT = process.env.PORT || 80;
 var server = app.listen(PORT, err => {
     if(err) throw err;
-		console.log("Server started on 80....");
+		console.log("Server started on "+PORT+"....");
     console.log("%c Server running", "color: green");
 });
 // var server = app.listen(80, function(){

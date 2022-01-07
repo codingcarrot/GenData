@@ -19,7 +19,7 @@ module.exports = {
 		let text = 'Dear Applicant,\n\n';
 			text += 'You have successfully applied for an invitation code to open your account on SNPSearch.\n\n\n';
 			text += '\tThis is your invitation code: '+code+'\n\n\n';
-			text += 'Please go to http://143.89.24.151:80/users/register to register for your own account with the code.\n';
+			text += 'Please go to http://143.89.25.28/users/register to register for your own account with the code.\n';
 			text += 'The code will be valid for 24 hours\n\n';
 			text += 'Have a great day!\n\n';
 			text += 'Best wishes,\n';
@@ -45,9 +45,3 @@ module.exports = {
 	},
 
 }
-
-
-
-
-
-
